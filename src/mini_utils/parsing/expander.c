@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:33:28 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/07 18:14:31 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:16:20 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,14 @@ static void	dollar_expand(t_data *d, int *i, int *flag, char **expand)
 
 	if (d->cmd[d->i][d->j] == '$' && !*flag)
 	{
-		if (d->cmd[d->i][d->j + 1] == '\0' || d->cmd[d->i][d->j + 1] == ' ')
+		if (d->cmd[d->i][d->j + 1] == '?')
+		{
+			*expand = ft_strjoin_gnl(*expand, ft_itoa(g_status));
+			d->j += 2;
+		}
+		else if (d->cmd[d->i][d->j + 1] == '\0' || d->cmd[d->i][d->j + 1] == ' '
+			|| d->cmd[d->i][d->j + 1] == '$' || d->cmd[d->i][d->j + 1] == '\''
+				|| d->cmd[d->i][d->j + 1] == '\"')
 		{
 			*expand = ft_strjoin_gnl(*expand, ft_strdup("$"));
 			d->j++;

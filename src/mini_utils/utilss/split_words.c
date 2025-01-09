@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:24:14 by sebferna          #+#    #+#             */
-/*   Updated: 2024/12/18 15:35:44 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:40:06 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	count_words(t_data *data, char const *str, char c, int j)
 	}
 	return (j);
 }
+
 
 static void	handle_quotes(t_data *data, char const *str, int *d, char c)
 {
