@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:19:55 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/07 17:27:10 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:39:21 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ int	get_last_token(t_data *d, t_parser **node, int *i, int *j)
 int	get_next_token(t_data *data, int *i, int *j)
 {
 	if (data->cmd[*i][*j] == '\0')
-		return (printf("syntax error"), EXIT_FAILURE);
+		return (printf("syntax error"), 1);
 	if (data->cmd[*i][*j] == '<')
-		return (printf("syntax error"), EXIT_FAILURE);
+		return (printf("syntax error"), 1);
 	if (data->cmd[*i][*j] == '>')
-		return (printf("syntax error"), EXIT_FAILURE);
+		return (printf("syntax error"), 1);
 	return (EXIT_SUCCESS);
 }
 
@@ -119,9 +119,9 @@ int	get_token_filein(t_data *data, t_parser **node, int *i, int *j)
 		if (data->flag_hered == 1 && data->cmd[*i][*j] == '>')
 			return (printf("Error: Syntax token >>\n"), EXIT_FAILURE);
 		while (data->cmd[*i][*j] == ' ' && ++(*j))
-			if (get_next_token(data, i, j) == EXIT_FAILURE)
+			if (get_next_token(data, i, j) == 1)
 				return (EXIT_FAILURE);
-		if (get_last_token(data, node, i, j) == EXIT_FAILURE)
+		if (get_last_token(data, node, i, j) == 1)
 			return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:16:51 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/07 17:18:32 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:37:01 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,19 @@ void	set_envp_index(t_data *data)
 
 void	ex_export(t_data *d, char **str, int i, int fd)
 {
-	set_envp_index(d);
 	if (str[1])
+	{
+		if (!is_valid_identifier(str[1]))
+		{
+			ft_printf(2, "%s: not a valid identifier\n", str[1]);
+			g_status = 1;
+			return ;
+		}
 		export_content(d, str[1], NULL, d->tmp_envp);
+	}
 	else if (str[1] == NULL)
 	{
+		set_envp_index(d);
 		while (d->tmp_envp)
 		{
 			if (d->tmp_envp->ind == i && i++)

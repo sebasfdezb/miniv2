@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:43:24 by sebferna          #+#    #+#             */
-/*   Updated: 2024/12/17 16:45:30 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:07:19 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,38 @@ void	signals(int sig)
 	}
 }
 
+int	is_valid_identifier(const char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !str[0])
+		return (0);
+	if (!((str[0] >= 'a' && str[0] <= 'z') || (str[0] >= 'A' && str[0] <= 'Z')
+			|| str[0] == '_'))
+		return (0);
+	while (str[i])
+	{
+		if (!((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A'
+					&& str[i] <= 'Z') || (str[i] >= '0' && str[i] <= '9')
+				|| str[i] == '_'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
 void	export_content(t_data *data, char *str, char **aux, t_envp *tmp)
 {
 	t_envp	*new;
 
+	if (!is_valid_identifier(str))
+	{
+		ft_printf(2, "Error\n");
+		g_status = 1;
+		return ;
+	}
 	aux = ft_split(str, '=');
 	if (!aux)
 		return ;

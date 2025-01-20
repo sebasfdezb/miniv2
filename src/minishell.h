@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:48:16 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/08 17:39:34 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:17:36 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void		set_envp_index(t_data *data);
 int			exp_cmp(const char *s1, const char *s2);
 int			size_envp(t_envp *lst);
 void		ex_export(t_data *d, char **str, int i, int fd);
+int 		is_valid_identifier(const char *str);
 //SIGNALS
 void		signals(int sig);
 void		sig_ctrlc(int sig);
@@ -98,7 +99,7 @@ void		free_t_parser(t_parser *node);
 int			get_path(t_data *d);
 int			get_cmds(t_data *d);
 char		**get_words(t_data *data, char const *str, char c, int i);
-int			count_words(t_data *data, char const *str, char c, int j);
+int			count_words(t_data *data, char const *str, char c, int count);
 int			size_words(t_data *data, char const *str, char c, int *d);
 void		split_words(t_data *data, char const *str, char c);
 char		**splits_cmd(char const *str, char c);
