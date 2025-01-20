@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:12:42 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/07 17:03:27 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:28:50 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int		ft_printhexa(unsigned long long n, char c, int fd);
 int		ft_printptr(unsigned long long ptr, int fd);
 int		ft_printstr(char *str, int fd);
 int		ft_printunsigned(unsigned long long int n, int fd);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

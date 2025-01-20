@@ -52,6 +52,7 @@ SRC 		= ft_atoi.c\
 				ft_lstmap_bonus.c\
 				get_next_line_bonus.c\
 				get_next_line_utils_bonus.c\
+				ft_strcmp.c
 
 OBJECTS = $(SRC:.c=.o)
 

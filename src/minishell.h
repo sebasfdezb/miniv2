@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:48:16 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/20 17:17:36 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:14:48 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void		expand(t_data *d);
 int			parsing(t_data *data, int i, int j);
 int			get_token_filein(t_data *data, t_parser **node, int *i, int *j);
 int			get_token_fileout(t_data *data, t_parser **node, int *i, int *j);
-void		ft_heredoc(t_data *data, t_parser **node, char *str);
+void		here_doc(t_data *data, t_parser **node, char *str);
 //route
 int			process_route(t_data *data, int i);
 //exec

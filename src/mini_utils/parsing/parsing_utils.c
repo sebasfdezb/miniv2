@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:19:55 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/20 17:39:21 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:14:14 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_last_token_util(t_data *data, t_parser **node, int *i, int *j)
 		(*node)->fileout = open(data->fileout, O_WRONLY | O_CREAT | O_TRUNC,
 				0644);
 	if (data->flag_hered == 1 && data->flag_token == 1)
-		ft_heredoc(data, node, NULL);
+		here_doc(data, node, NULL);
 	if (data->flag_add == 1 && data->flag_token == 2)
 		(*node)->fileout = open(data->fileout, O_WRONLY | O_CREAT | O_APPEND,
 				0644);

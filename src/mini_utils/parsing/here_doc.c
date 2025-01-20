@@ -6,13 +6,13 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:26:37 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/07 18:12:55 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:13:11 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_heredoc(t_data *data, t_parser **node, char *str)
+void	here_doc(t_data *data, t_parser **node, char *str)
 {
 	(*node)->filein = open("here_doc.tmp", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if ((*node)->filein == -1)
