@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:19:55 by sebferna          #+#    #+#             */
-/*   Updated: 2024/12/16 17:13:57 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:27:41 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	counts_extend(char const **s1, char c, char *s2)
 			while (**s1 == ' ')
 				(*s1)++;
 			if (**s1 == c)
-				return (printf("Error: Syntax token `|'\n"));
+				return (printf("Error: Syntax token `|'\n"), -2);
 		}
 		if (**s1 == '\'' || **s1 == '\"')
 		{

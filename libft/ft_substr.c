@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:56:01 by sebferna          #+#    #+#             */
-/*   Updated: 2023/11/29 15:13:57 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:06:40 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*a;
-	size_t			i;
-	size_t			x;
+	size_t	lon;
+	char	*s2;
 
-	if (!s)
+	lon = ft_strlen(s);
+	if (s == 0)
 		return (0);
-	i = 0;
-	if (start >= ft_strlen(s))
+	if (start > lon)
 		return (ft_strdup(""));
-	x = 0;
-	x = ft_strlen(s) - start;
-	if (x > len)
-		x = len;
-	a = malloc(sizeof(char) * (x + 1));
-	if (!a)
+	if (lon < len + start)
+		len = lon - start;
+	s2 = malloc((len + 1) * sizeof(char));
+	if (s2 == 0)
 		return (0);
-	while (i < len && s[start] != '\0')
-	{
-		a[i] = s[start];
-		i++;
-		start++;
-	}
-	a[i] = '\0';
-	return ((char *)a);
+	ft_memcpy(s2, s + start, len);
+	s2[len] = '\0';
+	return (s2);
 }
 
 /* int	main(void)

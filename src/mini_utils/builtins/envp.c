@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:44:28 by sebferna          #+#    #+#             */
-/*   Updated: 2024/12/17 16:37:13 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:28:56 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,29 @@ void	ex_envp(t_data *data, int fd)
 	}
 }
 
+t_envp	*ft_lstlastenv(t_envp *lst)
+{
+	t_envp	*new;
+
+	new = lst;
+	if (lst == 0)
+		return (0);
+	while (new->next != 0)
+		new = new->next;
+	return (new);
+}
+
 void	lst_addenv_back(t_envp **lst, t_envp *new)
 {
 	t_envp	*tmp;
 
-	if (!lst || !new)
-		return ;
-	if (*lst == NULL)
+	if (*lst != 0)
 	{
-		*lst = new;
-	}
-	else
-	{
-		tmp = *lst;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
+		tmp = ft_lstlastenv(*lst);
 		tmp->next = new;
 	}
+	else
+		*lst = new;
 }
 
 void	get_envp(t_data *data, char **envp, int i)

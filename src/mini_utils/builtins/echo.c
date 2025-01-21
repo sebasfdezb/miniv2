@@ -6,23 +6,11 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 18:27:48 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/08 17:56:09 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:16:25 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
-
-int	is_validflag(const char *str)
-{
-	int	i;
-
-	if (!str || str[0] != '-')
-		return (0);
-	i = 1;
-	while (str[i] == 'n')
-		i++;
-	return (str[i] == '\0');
-}
 
 void	prints_echo(char **str, int i, int fd)
 {
@@ -53,13 +41,24 @@ void	ex_echo(char **str, int flag, int fd)
 {
 	int	i;
 
-	i = 1;
-	while (str[i] && is_validflag(str[i]))
-	{
-		flag = 1;
+	i = 0;
+	while (str[i])
 		i++;
+	if (i > 1)
+	{
+		i = 0;
+		if (str[1] && !ft_strncmp(str[1], "-n", 2))
+		{
+			flag = 1;
+			i = 2;
+			echo_print_args(str, i, fd);
+		}
+		else
+		{
+			i = 1;
+			echo_print_args(str, i, fd);
+		}
 	}
-	echo_print_args(str, i, fd);
 	if (flag == 0)
 		ft_printf(fd, "\n");
 	g_status = 0;

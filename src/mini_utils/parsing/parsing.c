@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 20:00:46 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/20 16:41:40 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:11:13 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	input_files(t_data *d, t_parser **node, int *i, int *j)
 	{
 		d->size = 0;
 		d->a = -1;
-		while (d->cmd[*i][*j] != ' ' && d->cmd[*i][*j]!= '\0' && ++(d->size))
+		while (d->cmd[*i][*j] != ' ' && d->cmd[*i][*j] != '\0' && ++(d->size))
 			(*j)++;
 		d->filein = ft_calloc(d->size + 1, sizeof(char));
 		d->size = (*j) - d->size;
@@ -27,12 +27,12 @@ int	input_files(t_data *d, t_parser **node, int *i, int *j)
 			d->filein[++(d->a)] = d->cmd[*i][d->size];
 			(d->size)++;
 		}
-		if ((*node)->filein != 0)
+		if (((*node)->filein != 0))
 			close((*node)->filein);
 		(*node)->filein = open(d->filein, O_RDONLY);
 		free(d->filein);
 		if ((*node)->filein == -1)
-			return (close((*node)->filein), printf("error"));
+			return (close((*node)->filein), printf("error"), 1);
 		while (d->cmd[*i][*j] == ' ')
 			(*j)++;
 	}

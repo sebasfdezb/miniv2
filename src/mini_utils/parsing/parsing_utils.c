@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:19:55 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/20 18:14:14 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:16:36 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_last_token_util(t_data *data, t_parser **node, int *i, int *j)
 		(*node)->fileout = open(data->fileout, O_WRONLY | O_CREAT | O_APPEND,
 				0644);
 	if ((*node)->filein == -1 || (*node)->fileout == -1)
-		return (g_status = 1, printf("error"), EXIT_FAILURE);
+		return (g_status = 1, printf("error"), 1);
 	if (data->flag_token == 1)
 		free(data->filein);
 	if (data->flag_token == 2)
@@ -107,17 +107,17 @@ int	get_token_filein(t_data *data, t_parser **node, int *i, int *j)
 	if (data->cmd[*i][*j] == '<' && ++(*j))
 	{
 		if (data->cmd[*i][*j] == '\0')
-			return (printf("Error: Syntax token newline\n"), EXIT_FAILURE);
+			return (printf("Error: Syntax token newline\n"), 1);
 		if (data->cmd[*i][*j] == '>')
-			return (printf("Error: Syntax token `>'\n"), EXIT_FAILURE);
+			return (printf("Error: Syntax token `>'\n"), 1);
 		if (data->cmd[*i][*j] == '<' && ++(*j))
 			data->flag_hered = 1;
 		if (data->flag_hered == 1 && data->cmd[*i][*j] == '\0')
-			return (printf("Error: Syntax token newline\n"), EXIT_FAILURE);
+			return (printf("Error: Syntax token newline\n"), 1);
 		if (data->flag_hered == 1 && data->cmd[*i][*j] == '<')
-			return (printf("Error: Syntax token <<\n"), EXIT_FAILURE);
+			return (printf("Error: Syntax token <<\n"), 1);
 		if (data->flag_hered == 1 && data->cmd[*i][*j] == '>')
-			return (printf("Error: Syntax token >>\n"), EXIT_FAILURE);
+			return (printf("Error: Syntax token >>\n"), 1);
 		while (data->cmd[*i][*j] == ' ' && ++(*j))
 			if (get_next_token(data, i, j) == 1)
 				return (EXIT_FAILURE);

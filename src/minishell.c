@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:48:38 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/09 16:28:47 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:20:58 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ int	inputs(t_data *data, char **envp)
 {
 	if (lexer(data->prompt) == EXIT_FAILURE)
 		return (printf("Error: Unclosed Quotes\n"), EXIT_SUCCESS);
-	if (get_path(data) == EXIT_FAILURE)
+	if (get_path(data) == 1)
 		return (EXIT_SUCCESS);
-	if (get_cmds(data) == EXIT_FAILURE)
+	if (get_cmds(data) == 1)
 		return (EXIT_SUCCESS);
 	expand(data);
-	if (parsing(data, 0, 0) == EXIT_FAILURE)
+	if (parsing(data, 0, 0) == 1)
 		return (EXIT_SUCCESS);
 	if (data->nodes == NULL)
 		return (EXIT_SUCCESS);
-	if (process_route(data, 0) == EXIT_FAILURE)
+	if (process_route(data, 0) == 1)
 		return (EXIT_SUCCESS);
-	if (execute(data, (t_parser *)data->nodes->content, envp, data->nodes) == 1)
+	if (execute(data, ((t_parser *)data->nodes->content), envp, data->nodes) == 1)
 		return (EXIT_SUCCESS);
 	unlink("here_doc.tmp");
 	return (EXIT_SUCCESS);
@@ -52,15 +52,14 @@ int	getprompt(t_data *data)
 	char	direc[500];
 	char	*direcf;
 
-	if (getcwd(direc, sizeof(direc)) == NULL)
-		return (EXIT_FAILURE);
+	getcwd(direc, sizeof(direc));
 	direcf = ft_strjoin(direc, " % ");
-	if (direcf == NULL)
+	if (!direcf)
 		return (EXIT_FAILURE);
 	data->prompt = readline(direcf);
 	free(direcf);
 	direcf = NULL;
-	if (!data->prompt)
+	if (data->prompt == NULL)
 	{
 		printf("exit\n");
 		exit(EXIT_FAILURE);
@@ -74,11 +73,11 @@ int	minishell(t_data *data, char **env)
 	{
 		signal(SIGINT, signals);
 		signal(SIGQUIT, SIG_IGN);
-		if (getprompt(data) == EXIT_FAILURE)
+		if (getprompt(data) == 1)
 			exit (EXIT_FAILURE);
-		if (ft_strncmp(data->prompt, "\0", 1) == EXIT_FAILURE)
+		if (ft_strncmp(data->prompt, "\0", 1) >= 1)
 			add_history(data->prompt);
-		if (inputs(data, env) == EXIT_FAILURE)
+		if (inputs(data, env) == 1)
 			return (EXIT_FAILURE);
 		if (data->nodes != NULL)
 			free_node(&data->nodes);
@@ -109,7 +108,7 @@ int	main(int argc, char **argv, char **envp)
 		return (EXIT_FAILURE);
 	init_struct(data);
 	get_envp(data, envp, -1);
-	if (minishell(data, envp) == EXIT_FAILURE)
+	if (minishell(data, envp) == 1)
 		return (free_all(data), EXIT_FAILURE);
 	return (free_all(data), EXIT_SUCCESS);
 }

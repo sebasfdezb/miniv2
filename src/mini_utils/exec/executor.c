@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:06:21 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/08 17:40:32 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:31:46 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	catnls(t_data *data, char **envp)
 
 	tmp = data->nodes;
 	if (tmp->next != NULL && tmp->next->next != NULL
-		&& !ft_strncmp(((t_parser *)(tmp->content))->all_cmd[0],
-		"car\0", 4) == 0
+		&& ft_strncmp(((t_parser *)(tmp->content))->all_cmd[0],
+		"cat\0", 4) == 0
 		&& ((t_parser *)(tmp->next->content))->all_cmd[1] == NULL
 		&& ((t_parser *)(tmp->next->content))->filein == 0
 		&& ((t_parser *)(tmp->next->content))->fileout == 1
@@ -79,8 +79,8 @@ int	execute(t_data *data, t_parser *node, char **envp, t_list *aux)
 		if (data->flag_pipe == 1)
 		{
 			if ((!ft_strncmp(node->all_cmd[0], "cat\0", 4)
-					&& node->all_cmd[1] == NULL && node->filein == 0)
-				&& catnls(data, envp) == 0)
+					&& node->all_cmd[1] == NULL && node->filein == 0
+					&& node->fileout == 1) && catnls(data, envp) == 0)
 				return (EXIT_SUCCESS);
 			while (aux)
 			{

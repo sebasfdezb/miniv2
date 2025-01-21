@@ -6,17 +6,17 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:58:27 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/08 17:51:35 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:21:08 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-/* int	ex_exit(t_data *data, t_parser *node, int i, int fd)
+/* int	ex_exit(t_data *data, t_parser *node, int fd, int i)
 {
 	ft_printf(fd, "exit\n");
 	if (node->all_cmd[1] != NULL && node->all_cmd[2] != NULL)
-		return (ft_printf(fd, "exit: too many arguments\n"));
+		return (ft_printf(fd, "exit: too many arguments\n"), 1);
 	else if (node->all_cmd[1] != NULL)
 	{
 		i = -1;

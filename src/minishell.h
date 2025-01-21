@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:48:16 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/20 18:14:48 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:21:53 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,9 @@ int			ex_builts(t_data *data, t_parser *n);
 void		ex_cd(t_data *data, char **str, int flag);
 void		ex_echo(char **str, int flag, int fd);
 void		get_envp(t_data *data, char **envp, int i);
-int			ex_exit(t_data *data, t_parser *node, int fd);
+int			ex_exit(t_data *d, t_parser *node, int fd);
 void		ex_pwd(int fd);
 void		ex_unset(t_data *data, char *str);
 void		ex_envp(t_data *data, int fd);
+t_envp		*ft_lstlastenv(t_envp *lst);
 #endif
