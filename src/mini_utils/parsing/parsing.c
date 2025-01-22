@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 20:00:46 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/21 15:11:13 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:37:06 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	process_command(t_data *data, t_parser **node, int *i)
 	while (data->cmd[*i][data->a] != '<' && data->cmd[*i][data->a] != '>' &&
 			data->cmd[*i][data->a] != '\0')
 	{
-		if (data->cmd[*i][data->a] == data->quote)
+		if (data->cmd[*i][data->a] == data->qte)
 		{
 			data->str[data->b] = data->cmd[*i][data->a];
 			(data->a)++;
 			(data->b)++;
-			while (data->cmd[*i][data->a] != data->quote)
+			while (data->cmd[*i][data->a] != data->qte)
 			{
 				data->str[data->b] = data->cmd[*i][data->a];
 				(data->a)++;
@@ -80,9 +80,9 @@ int	get_command(t_data *data, t_parser **node, int *i, int *j)
 		{
 			if (data->cmd[*i][*j] == '\'' || data->cmd[*i][*j] == '\"')
 			{
-				data->quote = data->cmd[*i][*j];
+				data->qte = data->cmd[*i][*j];
 				(data->size)++;
-				while (data->cmd[*i][++(*j)] != data->quote)
+				while (data->cmd[*i][++(*j)] != data->qte)
 					(data->size)++;
 			}
 			(data->size)++;

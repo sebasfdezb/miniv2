@@ -6,48 +6,46 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:58:27 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/21 18:21:08 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:47:32 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-/* int	ex_exit(t_data *data, t_parser *node, int fd, int i)
+static int	exit2(t_parser *n, int fd)
 {
-	ft_printf(fd, "exit\n");
-	if (node->all_cmd[1] != NULL && node->all_cmd[2] != NULL)
-		return (ft_printf(fd, "exit: too many arguments\n"), 1);
-	else if (node->all_cmd[1] != NULL)
+	int		j;
+	long	exit_code;
+
+	j = 0;
+	if (n->all_cmd[1] != NULL)
 	{
-		i = -1;
-		if (node->all_cmd[1][0] == '+' || node->all_cmd[1][0] == '-')
-			i++;
-		while (node->all_cmd[1][++i])
+		while (n->all_cmd[1][j] != '\0')
 		{
-			if (ft_isdigit(node->all_cmd[1][i]) == 0)
+			if (ft_isdigit(n->all_cmd[1][j]) == 0 &&
+				!(n->all_cmd[1][j] == '+' || n->all_cmd[1][j] == '-'))
 			{
-				ft_printf(fd, "exit: %s: numeric argument required\n",
-					node->all_cmd[1]);
-				break ;
+				ft_printf (fd, "exit: %s: number required\n", n->all_cmd[1]);
+				g_status = 2;
+				return (g_status);
 			}
+			j++;
 		}
+		exit_code = ft_atoi(n->all_cmd[1]);
+		if (exit_code > 255)
+			exit_code = exit_code % 256;
+		if (exit_code < 0)
+			exit_code += 256;
+		g_status = (int)exit_code;
 	}
-	if (data->path != NULL)
-	{
-		free_split(data->path);
-		data->path = NULL;
-	}
-	exit(g_status);
-} */
+	return (g_status);
+}
 
 int	ex_exit(t_data *d, t_parser *node, int fd)
 {
 	int		i;
-	int		j;
-	long 	exit_code;
 
 	i = 0;
-	j = 0;
 	while (node->all_cmd[i] != NULL)
 		i++;
 	if (i > 2)
@@ -58,24 +56,9 @@ int	ex_exit(t_data *d, t_parser *node, int fd)
 	}
 	if (i >= 2)
 	{
-		while (node->all_cmd[1][j] != '\0')
-		{
-			if (ft_isdigit(node->all_cmd[1][j]) == 0 &&
-				!(node->all_cmd[1][j] == '+' || node->all_cmd[1][j] == '-'))
-			{
-				ft_printf(fd, "exit exit: %s: numeric argument required\n",
-					node->all_cmd[1]);
-				g_status = 2;
-				return (g_status);
-			}
-			j++;
-		}
-		exit_code = ft_atoi(node->all_cmd[1]);
-		if (exit_code > 255)
-			exit_code = exit_code % 256;
-		if (exit_code < 0)
-			exit_code += 256;
-		g_status = (int)exit_code;
+		g_status = exit2(node, fd);
+		if (g_status != 0)
+			return (g_status);
 	}
 	if (d->path != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:48:16 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/21 18:21:53 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:35:45 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 
-extern int g_status;
+extern int	g_status;
 
 typedef struct s_envp
 {
@@ -62,7 +62,7 @@ typedef struct s_data
 	int			a;
 	t_list		*nodes;
 	int			flag_pipe;
-	char		quote;
+	char		qte;
 	char		*str;
 	int			b;
 	int			d;
@@ -84,7 +84,6 @@ void		set_envp_index(t_data *data);
 int			exp_cmp(const char *s1, const char *s2);
 int			size_envp(t_envp *lst);
 void		ex_export(t_data *d, char **str, int i, int fd);
-int 		is_valid_identifier(const char *str);
 //SIGNALS
 void		signals(int sig);
 void		sig_ctrlc(int sig);

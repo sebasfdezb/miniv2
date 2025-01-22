@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:25:59 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/20 18:42:08 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:33:24 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 			return (s2[i] - s1[i]);
 		else if (s1[i] > s2[i])
 			return (s2[i] - s1[i]);
-    }
-    return (0);
+	}
+	return (0);
 }

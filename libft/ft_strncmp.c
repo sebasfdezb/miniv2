@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:37:40 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/21 18:05:33 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:33:03 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t			i;
-	unsigned char *st1;
-	unsigned char *st2;
+	unsigned char	*st1;
+	unsigned char	*st2;
 
 	i = 0;
 	st1 = (unsigned char *)s1;

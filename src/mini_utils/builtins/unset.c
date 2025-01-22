@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 18:48:11 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/20 18:57:19 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:29:44 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ void	ex_unset(t_data *data, char *str)
 	check_path(data);
 	g_status = 1;
 }
-

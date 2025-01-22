@@ -6,13 +6,13 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:48:38 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/21 15:20:58 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:35:07 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int g_status = 0;
+int	g_status = 0;
 
 static void	init_struct(t_data *data)
 {
@@ -41,7 +41,8 @@ int	inputs(t_data *data, char **envp)
 		return (EXIT_SUCCESS);
 	if (process_route(data, 0) == 1)
 		return (EXIT_SUCCESS);
-	if (execute(data, ((t_parser *)data->nodes->content), envp, data->nodes) == 1)
+	if (execute(data, ((t_parser *)data->nodes->content),
+			envp, data->nodes) == 1)
 		return (EXIT_SUCCESS);
 	unlink("here_doc.tmp");
 	return (EXIT_SUCCESS);
