@@ -6,7 +6,7 @@
 #    By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/07 12:47:50 by sebferna          #+#    #+#              #
-#    Updated: 2025/01/08 16:24:24 by sebferna         ###   ########.fr        #
+#    Updated: 2025/01/22 16:11:37 by sebferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,14 @@ NAME = minishell
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
 SRC = src/minishell.c\
 		src/mini_utils/builtins/cd.c\
 		src/mini_utils/builtins/echo.c\
 		src/mini_utils/builtins/envp.c\
 		src/mini_utils/builtins/exit.c\
+		src/mini_utils/builtins/export.c\
 		src/mini_utils/builtins/pwd.c\
 		src/mini_utils/builtins/unset.c\
 		src/mini_utils/exec/error_msg.c\
@@ -35,11 +36,11 @@ SRC = src/minishell.c\
 		src/mini_utils/parsing/lexer.c\
 		src/mini_utils/parsing/parsing_utils.c\
 		src/mini_utils/parsing/parsing.c\
-		src/mini_utils/utilss/export.c\
 		src/mini_utils/utilss/split_words.c\
 		src/mini_utils/utilss/split_cmds.c\
 		src/mini_utils/utilss/splits.c\
 		src/mini_utils/utilss/utils.c\
+		src/mini_utils/utilss/signals.c\
 
 LIBFT_DIR = ./libft
 

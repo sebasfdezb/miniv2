@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:43:24 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/22 15:37:23 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:05:24 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,40 +21,6 @@ void	draw(void)
 	printf(" ███████╗██║      \n");
 	printf(" ╚══════╝╚═╝      \n");
 	printf("\n");
-}
-
-void	sig_ctrlslash(int sig)
-{
-	if (sig == SIGQUIT)
-	{
-		printf("Quit: 3\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-	}
-}
-
-void	sig_ctrlc(int sig)
-{
-	if (sig == SIGINT)
-	{
-		printf("\033[K\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-	}
-}
-
-void	signals(int sig)
-{
-	if (sig == SIGINT)
-	{
-		rl_on_new_line();
-		rl_redisplay();
-		rl_replace_line("", 0);
-		printf("\033[K\n");
-		rl_on_new_line();
-		rl_redisplay();
-		rl_replace_line("", 0);
-	}
 }
 
 void	export_content(t_data *data, char *str, char **aux, t_envp *tmp)
