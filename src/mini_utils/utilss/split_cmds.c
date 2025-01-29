@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:19:55 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/22 15:37:19 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:52:01 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	size_cmd(char const *str, char c, int j)
 int	counts_extend(char const **s1, char c, char *s2)
 {
 	if (**s1 == c)
-		return (printf("Error: Syntax token `|'\n"), -2);
+		return (printf("\033[31mError: Syntax token `|'\033[0m\n"), -2);
 	while (**s1 != c && **s1 != '\0')
 	{
 		if ((**s1 == '<' || **s1 == '>') && (*s1)++)
@@ -48,7 +48,7 @@ int	counts_extend(char const **s1, char c, char *s2)
 			while (**s1 == ' ')
 				(*s1)++;
 			if (**s1 == c)
-				return (printf("Error: Syntax token `|'\n"), -2);
+				return (printf("\033[31mError: Syntax token `|'\033[0m\n"), -2);
 		}
 		if (**s1 == '\'' || **s1 == '\"')
 		{
@@ -75,7 +75,7 @@ static int	count_cmd(char const *str, char c, int i)
 			while (*str == ' ')
 				str++;
 			if (*str == c || *str == '\0')
-				return (printf("Error: Syntax Pipes\n"), -2);
+				return (printf("\033[31mError: Syntax Pipes\033[0m\n"), -2);
 		}
 		i++;
 	}

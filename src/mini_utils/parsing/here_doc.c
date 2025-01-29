@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:26:37 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/22 15:37:15 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:55:17 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	here_doc(t_data *data, t_parser **node, char *str)
 	(*node)->filein = open("here_doc.tmp", O_RDONLY);
 	data->dup_stdin = dup(STDIN_FILENO);
 	if ((*node)->filein == -1)
-		error_msg("Here DOc open file1 Error");
+		error_msg("\033[31mHere Doc open file1 Error\033[0m");
 }

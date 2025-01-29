@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:48:38 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/22 15:35:07 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:48:48 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	init_struct(t_data *data)
 int	inputs(t_data *data, char **envp)
 {
 	if (lexer(data->prompt) == EXIT_FAILURE)
-		return (printf("Error: Unclosed Quotes\n"), EXIT_SUCCESS);
+		return (printf("\033[31mError: Unclosed Quotes\033[0m\n"),
+			EXIT_SUCCESS);
 	if (get_path(data) == 1)
 		return (EXIT_SUCCESS);
 	if (get_cmds(data) == 1)
@@ -52,9 +53,12 @@ int	getprompt(t_data *data)
 {
 	char	direc[500];
 	char	*direcf;
+	char	*tmp;
 
 	getcwd(direc, sizeof(direc));
-	direcf = ft_strjoin(direc, " % ");
+	tmp = ft_strjoin("\033[32m", direc);
+	direcf = ft_strjoin(tmp, "\033[0m % ");
+	free(tmp);
 	if (!direcf)
 		return (EXIT_FAILURE);
 	data->prompt = readline(direcf);

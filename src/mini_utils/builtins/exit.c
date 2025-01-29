@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:58:27 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/22 15:47:32 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:43:40 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ex_exit(t_data *d, t_parser *node, int fd)
 		i++;
 	if (i > 2)
 	{
-		ft_printf(fd, "exit: exit: too many arguments\n");
+		ft_printf(fd, "\033[31mexit: exit: too many arguments\033[0m\n");
 		g_status = 1;
 		return (g_status);
 	}
@@ -65,6 +65,6 @@ int	ex_exit(t_data *d, t_parser *node, int fd)
 		free_split(d->path);
 		d->path = NULL;
 	}
-	ft_printf(fd, "exit\n");
+	ft_printf(fd, "\033[31mexit\033[0m\n");
 	exit(g_status);
 }

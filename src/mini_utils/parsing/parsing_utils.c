@@ -6,7 +6,7 @@
 /*   By: sebferna <sebferna@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:19:55 by sebferna          #+#    #+#             */
-/*   Updated: 2025/01/22 15:37:08 by sebferna         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:53:46 by sebferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,17 @@ int	get_token_filein(t_data *data, t_parser **node, int *i, int *j)
 	if (data->cmd[*i][*j] == '<' && ++(*j))
 	{
 		if (data->cmd[*i][*j] == '\0')
-			return (printf("Error: Syntax token newline\n"), 1);
+			return (printf("\033[31mError: Syntax token newline\033[0m\n"), 1);
 		if (data->cmd[*i][*j] == '>')
-			return (printf("Error: Syntax token `>'\n"), 1);
+			return (printf("\033[31mError: Syntax token `>'\033[0m\n"), 1);
 		if (data->cmd[*i][*j] == '<' && ++(*j))
 			data->flag_hered = 1;
 		if (data->flag_hered == 1 && data->cmd[*i][*j] == '\0')
-			return (printf("Error: Syntax token newline\n"), 1);
+			return (printf("\033[31mError: Syntax token newline\033[0m\n"), 1);
 		if (data->flag_hered == 1 && data->cmd[*i][*j] == '<')
-			return (printf("Error: Syntax token <<\n"), 1);
+			return (printf("\033[31mError: Syntax token <<\033[0m\n"), 1);
 		if (data->flag_hered == 1 && data->cmd[*i][*j] == '>')
-			return (printf("Error: Syntax token >>\n"), 1);
+			return (printf("\033[31mError: Syntax token >>\033[0m\n"), 1);
 		while (data->cmd[*i][*j] == ' ' && ++(*j))
 			if (get_next_token(data, i, j) == 1)
 				return (EXIT_FAILURE);
